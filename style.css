@@ -1,3 +1,103 @@
-* {
-  font-family: 'Helvetica', 'Sans Serif', 'Arial';
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  background-color: #f8f7f5;
+  color: #333333;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+p,li {
+line-height: 22px; }
+
+a, a:visited { color: black; }
+a:hover { color: red; }
+
+.page {
+  text-align: center;
+}
+
+.wrapper {
+  max-width: 900px;
+  text-align: left;
+  display: inline-block;
+}
+
+
+.header {
+  display: block;
+  margin: 40px 0px;
+  padding: 40px 40px;
+  color: white;
+  background: url('./img/hills.png') center center no-repeat;
+  background-size: 50% 50%;
+  text-align: center;
+}
+.project-walkstreets {
+  height: 100px;
+  display: block;
+  margin: 20px 0px;
+  background: url('http://urbica.co/img/walkstreets.png') center center no-repeat;
+}
+
+.project-velo {
+  height: 100px;
+  display: block;
+  margin: 20px 0px;
+  background: url('http://urbica.co/img/velo.png') center center no-repeat;
+}
+
+.project-hills {
+  height: 100px;
+  display: block;
+  margin: 20px 0px;
+  background: url('http://urbica.co/img/hills.png') center center no-repeat;
+}
+
+.date-place {
+  font-size: 20px;
+  margin: 20px 0px;
+  text-align: center;
+}
+
+.days {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+
+}
+
+.register {
+  text-align: center;
+  padding: 40px 0px;
+}
+
+.registerLink {
+  text-align: center;
+  padding: 20px 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  /* Rectangle 380: */
+  background: #34A9AC;
+  border-radius: 5px;
+
+}
+
+.registerLink:hover {
+  background: #3DC0C4;
+  color: white;
 }
