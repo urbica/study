@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Convenience time graph</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<style>
+  body { background: #000; }
+</style>
+<body>
+<div id='tooltip'></div>
+<div id='area'><svg id='graph' width="1000" heigth="600"></svg></div>
+
+
+<script>
+
+var hourwidth = 30;
+
+var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+    daysLabels = ['ПН','ВТ','СР','ЧТ','ПТ','СБ','ВС'],
+    workdaysTimes = {'WorkdaysMorning':[9,12], 'WorkdaysDay':[14,18], 'WorkdayEvening':[18,21], 'WorkdaysAllDay':[0,0]},
+    weekendsTimes = {'WeekendsMorning':[9,12], 'WeekendsDay':[14,18], 'WeekendsEvening':[18,21], 'WeekendAllDay':[9,18]};
+
+var x = d3.scale.linear()
+    .domain([9,21])
+    .range([0,11*hourwidth]);
+
+var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
+
+var graph = d3.select("#graph"),
+    stripes = graph.append("g").attr("transform", "translate(30,0)");
+
+  graph.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(35,140)")
+    .call(xAxis);
+
+//loading stations CSV
+
+d3.tsv("data.csv", function(d,i) {
+    days.forEach(function(day,dnum) {
+      if(d[day]) {
+        drawStripes(d,dnum);
+      }
+    });
+
+  },
+   function(d){
+        // data imported
+
+	  }
+  );
+
+  function drawStripes(d,dnum) {
+    var intervals;
+    if(dnum > 4) intervals = weekendsTimes;
+      else intervals = workdaysTimes;
+
+
+      for(n in intervals) {
+        if(d[n]) {
+          console.log(dnum + ' ' + intervals[n]);
+          stripes.append("rect")
+            .attr("width", (intervals[n][1]-intervals[n][0])*(hourwidth))
+            .attr("height", 19)
+            .attr("x", (intervals[n][0]-9)*hourwidth)
+            .attr("y", dnum*20)
+            .style("opacity", 0.1)
+            .style("fill", "#0bd");
+          console.log(n);
+        }
+      }
+  }
+</script>
+</body>
+</html>
