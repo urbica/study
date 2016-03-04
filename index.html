@@ -18,9 +18,9 @@
     <div class="date-place"><p>Москва (4 дня: 17,20 и 24,27 марта 2016)</p></div>
     </div>
     <h2>Привет!</h2>
-    <p>Меня зовут Андрей Кармацкий, я дизайнер в студии <a href="http://urbica.co">Urbica</a>, занимаюсь интерактивной картографией и визуализацией данных.</p>
+    <p>Мы <a href="http://urbica.co">Urbica Design</a> — занимаемся интерактивной картографией и визуализацией данных.</p>
     <p>Работа с подобными проектами происходит на стыке нескольких областей знаний: картография, анализ данных, дизайн пользовательских интерфейсов и веб-разработка.</p>
-    <p>Несколько ссылок о том, что я делаю:
+    <p>Несколько ссылок о том, что мы делаем с картами и данными:
       <ul>
         <li><a href="http://urbica.co/bikes/">Визуализация данных Московского велопроката</a> (проект <a href="http://urbica.co/velo/">прошлого сезона</a>)</li>
         <li>«<a href="http://walkstreets.org">Улицы прогулок</a>» — проект о городской среде для пешеходов в центре города</a></li>
@@ -30,7 +30,7 @@
         <li>Тематическая группа в Фейсбуке «<a href="https://www.facebook.com/groups/geoviz/">Бытовая картография</a>»</li>
       </ul>
     </p>
-    <p>На воркшопе мы детально рассмотрим, как создаются проекты с интерактивными картами, какие инструменты используются и что нужно учитывать при визуализации данных.</p>
+    <p>На курсе мы детально рассмотрим, как создаются проекты с интерактивными картами, какие инструменты используются и что нужно учитывать при визуализации данных.</p>
 		<p>Небольшой <a href="https://www.facebook.com/groups/geoviz/permalink/929082940519523/">рассказ о прошедшем</a> подобном воркшопе 3-4 октября 2015 года и примеры работ, созданных студентами.</p>
 		<p><a href="https://www.facebook.com/urbica.study/">Страница воркшопа в Фейсбуке</a> — новости, рассказы о прошедших курсах, работы студентов и туториалы.</p>
 
@@ -169,12 +169,24 @@
     var pageHeight = Math.max( body.scrollHeight, body.offsetHeight,
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
 
+		function color(p) {
+			c = 'rgb(245,243,240)';
+
+//			c = 'rgb(' + Math.round(90 + 400*p) + ', 100, 95)';
+
+			return c;
+		}
+
+			document.body.style.background = color(0);
+
     // Scroll handler to toggle classes.
     var scaleImage = function() {
       var scrollScale = (window.pageYOffset/pageHeight);
+			document.body.style.background = color(scrollScale);
+			//console.log(color(scrollScale));
       var bgWidth = headerImageBg.x/2 + headerImageBg.x*scrollScale,
           bgHeight = headerImageBg.y/2 + headerImageBg.y*scrollScale;
-      console.log(scrollScale);
+      //console.log(scrollScale);
       headerImage.style.backgroundSize = bgWidth + "px "+ bgHeight +"px";
     };
 
